@@ -22,8 +22,8 @@ class MainPresenter() : BasePresenter<MainListView>() {
     fun getStatus() {
         // parse date
 
-        val start = Date(2018 - 1900, 0,1).format("MM dd, yyyy")
-        val end = Date(2019 - 1900, 0,1).format("MM dd, yyyy")
+        val start = Date(2018 - 1900, 0,1).format("MMM dd, yyyy")
+        val end = Date(2019 - 1900, 0,1).format("MMM dd, yyyy")
 
         mvpView?.showStatus(start, end)
     }

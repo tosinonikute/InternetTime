@@ -3,27 +3,24 @@ package com.s.internettime;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mockito;
 
-import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class MainPresenterTest {
 
     private MainPresenter presenter;
-
-    @InjectMocks
-    DateFormat formatter;
+    private SimpleDateFormat formatter;
 
     @Before
     public void before() {
-
+        formatter = mock(SimpleDateFormat.class);
     }
 
     @Test
@@ -33,10 +30,10 @@ public class MainPresenterTest {
         presenter = new MainPresenter();
         presenter.attachView(view);
 
-        Mockito.when(formatter.format(any(Date.class))).thenReturn(TimeZone.getDefault().getDisplayName());
+        when(formatter.format(any(Date.class))).thenReturn(TimeZone.getDefault().getDisplayName());
 
         presenter.getStatus();
 
-        verify(view).showStatus("Nov 01, 2019", "Nov 01, 2020");
+        verify(view).showStatus("Jan 01, 2019", "Jan 01, 2020");
     }
 }
